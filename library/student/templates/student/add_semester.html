@@ -1,0 +1,14 @@
+{% extends 'student/admin_layout.html' %}
+
+{% block body %}
+    <!-- <h1>hello</h1> -->
+    <div class="about-sec section" id="about">
+        <div class="container">
+            <form method = 'post' action = '{% url "add_semester" %}'>
+                {% csrf_token %}
+                <input type="text" name = 'name' class="form-control" placeholder="Enter semester">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

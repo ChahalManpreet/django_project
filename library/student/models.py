@@ -13,14 +13,15 @@ class librarian(models.Model):
 class category(models.Model):
     Category_Name = models.CharField(max_length = 200)
 
-class branch(models.Model):
-    Branch_Name = models.CharField(max_length = 200)
 
-class sem(models.Model):
-    Sem = models.CharField(max_length= 200)
+class branch(models.Model):
+    name = models.CharField(max_length=200)
 
 class section(models.Model):
-    Sec = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+
+class semester(models.Model):
+    name = models.CharField(max_length=200)
 
 class book(models.Model):
     BookName = models.CharField(max_length = 200)
@@ -37,12 +38,10 @@ class students(models.Model):
     userId = models.OneToOneField(User, on_delete=models.CASCADE)
     # Stu_Name = models.CharField(max_length = 200)
     Reg_No = models.IntegerField()
-    Branch = models.ForeignKey(branch, on_delete = models.CASCADE, related_name = "Branch_Id")
-    Semester = models.ForeignKey(sem, on_delete = models.CASCADE, related_name = "Sem_Id")
-    Section = models.ForeignKey(section, on_delete = models.CASCADE, related_name = "Sec_Id")
-    # Email = models.CharField(max_length = 200)
-    # Username = models.CharField(max_length = 200)
-    # Password = models.CharField(max_length = 200)
+    
+    branch_id = models.ForeignKey(branch, on_delete=models.CASCADE, related_name = 'branch_id', default = '')
+    section_id = models.ForeignKey(section, on_delete=models.CASCADE, related_name = 'sec_id', default = '')
+    semester_id = models.ForeignKey(semester, on_delete=models.CASCADE, related_name = 'sem_id', default = '')
 
     
 

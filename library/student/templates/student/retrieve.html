@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'pizza-edit' pizza.id %}" method="post">
+        {% csrf_token %}
+        <label for="name">Pizza Name</label>
+        <input type="text" name="name" id="name" placeholder="enter pizza name" value="{{pizza.name}}">
+        <label for="size">Pizza Size</label>
+        <input type="text" name="size" placeholder="enter pizza size" value="{{pizza.size}}">
+        <label for="price">Pizza Price</label>
+        <input type="text" name="price" placeholder="enter pizza price" value="{{pizza.price}}">
+        <!-- <label for="veg">Vegetarian</label>
+        input -->
+        <input type="submit" value="submit">
+    </form>
+
+</body>
+</html>
