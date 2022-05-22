@@ -72,7 +72,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <a href="index.html">Home</a>
                             </li>
                             <li>
-                                <a href="about.html">about us</a>
+                                <a href="{% url 'branches' %}">Branches</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">shop
@@ -181,7 +181,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
         <!-- //banner -->
         <!-- breadcrumbs -->
-        <div class="crumbs text-center">
+        <!--<div class="crumbs text-center">
             <div class="container">
                 <div class="row">
                     <ul class="btn-group btn-breadcrumb bc-list">
@@ -196,22 +196,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!--//breadcrumbs ends here-->
         <!-- signin and signup form -->
         <div class="login-form section text-center">
             <div class="container">
-                <h4 class="rad-txt">
-                    <span class="abtxt1">Sign in</span>
-                    <span class="abtext">sign up</span>
-                </h4>
+                
                 <div id="loginbox" style="margin-top:30px;" class="mainbox  loginbox">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="panel-title">Sign In</div>
-                            <div class="fpassword">
-                                <a href="#">Forgot password?</a>
-                            </div>
+                           
                         </div>
 
 
@@ -257,10 +252,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <i class="glyphicon glyphicon-user"></i>
                                     </span>
                                     <select  id = "login-branch" name="branch"class="form-control">
-                                        <option selected disabled>Select Branch</option>
+                                        <option selected disabled  required="">Select Branch</option>
 
                                         {% for i in branches %}
-                                            <option value="{{i.id}}">{{i.name}}</option>
+                                            <option value="{{i.id}}" >{{i.name}}</option>
                                         {% endfor %}
                                      </select>
                                 </div>
@@ -269,7 +264,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <i class="glyphicon glyphicon-user"></i>
                                     </span>
                                     <select  id = "login-branch" name="sem" class="form-control">
-                                        <option selected disabled>Select Semester</option>
+                                        <option selected disabled  required="">Select Semester</option>
                                         {% for i in sems %}
                                             <option value="{{i.id}}">{{i.name}}</option>
                                         {% endfor %}
@@ -280,41 +275,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <i class="glyphicon glyphicon-lock"></i>
                                         </span>
                                     <select  id = "login-branch" name="section" class="form-control">
-                                        <option selected disabled>Select Section</option>
+                                        <option selected disabled  required="">Select Section</option>
                                         {% for i in sections %}
                                         <option value="{{i.id}}">{{i.name}}</option>
                                     {% endfor %}
                                      </select>
                                 </div>
-                                
-
-                        
-
-                                <div class="input-group">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
-                                        </label>
-                                    </div>
-                                </div>
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
                                     <div class="col-sm-12 controls">
-                                        <input type="submit" value = 'Register'>
+                                        <input type="submit"  class="btn btn-primary" value = 'Register'>
                                         <!-- <a id="btn-login" href="" class="btn btn-success">SAVE </a>
                                         <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a> -->
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-md-12 control">
-                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
-                                            Don't have an account!
-                                            <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
-                                                Sign Up Here
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </form>
                         </div>
                     </div>

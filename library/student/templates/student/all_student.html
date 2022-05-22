@@ -1,0 +1,38 @@
+{% extends 'student/admin_layout.html' %}
+
+{% block body %}
+    <!-- <h1>hello</h1> -->
+    <div class="about-sec section" id="about">
+        <div class="container">
+            <!-- <a href="{% url 'add_branch' %}" class="btn btn-primary">Add</a> -->
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Registration No</th>
+                    <th>UserName</th>
+                    <th>Email</th>
+                    <th>Brach</th>
+                    <th>SEction</th>
+                    <th>Semester</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in students %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.Reg_No}}</td>
+                        <td>{{i.userId.username}}</td>
+                        <td>{{i.userId.email}}</td>
+                        <td>{{i.branch_id.name}}</td>
+                        <td>{{i.section_id.name}}</td>
+                        <td>{{i.semester_id.name}}</td>
+                        <td>
+                            <a href = "{% url 'register-edit' i.id %}" class = 'btn btn-primary'>Edit</a>
+                            <a href = '{% url "delete_branch" i.id %}' class = 'btn btn-primary'>Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    
+{% endblock %}
