@@ -7,7 +7,7 @@
         <div id="loginbox" style="margin-top:30px;" class="mainbox  loginbox">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <div class="panel-title">Sign In</div>
+                    <div class="panel-title">Edit Student Information</div>
                    
                 </div>
 
@@ -18,52 +18,53 @@
 
                 <div style="padding-top:30px" class="panel-body">
                     <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                    <form id="loginform" class="form-horizontal" action="{% url 'add_student' %}" method="post">
+                    <form id="loginform" class="form-horizontal" action='{% url  "edit_student" student.id %}' method="post">
                         {% csrf_token %}
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="glyphicon "></i>
                             </span>
-                            <input id="login-username" type="text" class="form-control" name="username" value="{{" placeholder="username or email" required="">
+                            <input id="login-username" type="text" class="form-control" name="username" value="{{student.userId.username}}" placeholder="username " required="">
                         </div>
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="glyphicon "></i>
                             </span>
-                            <input id="login-username" type="email" class="form-control" name="email" value="" placeholder="username or email" required="">
+                            <input id="login-username" type="email" class="form-control" name="email" value="{{student.userId.email}}" placeholder=" email" required="">
                         </div>
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon">
-                                <i class="glyphicon glyphicon-lock"></i>
+                                <i class="glyphicon "></i>
                             </span>
-                            <input id="login-password" type="password" class="form-control" name="password" placeholder="password" required="">
+                            <input id="login-password" type="password" class="form-control" name="password" placeholder="password is no editable" >
                         </div>
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="glyphicon "></i>
                             </span>
-                            <input id="login-registration" type="text" class="form-control" name="reg" value="" placeholder="enter registration number" required="">
+                            <input id="login-registration" type="text" class="form-control" name="reg" value="{{student.Reg_No}}" placeholder="enter registration number" required="">
                         </div>
                         
                         
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="glyphicon "></i>
                             </span>
                             <select  id = "login-branch" name="branch"class="form-control">
-                                <option selected disabled  required="">Select Branch</option>
+                                <!--<option selected disabled  required="">Select Branch</option>-->
+                                <option value = "{{student.branch_id.name}}"></option>
 
-                                {% for i in branches %}
-                                    <option value="{{i.id}}" >{{i.name}}</option>
-                                {% endfor %}
+                                <!--{% for i in branches %}
+                                    <option value="{{student.branch_id}}" >{{student.name}}</option> student.branch_id.name
+                                {% endfor %}-->
                              </select>
                         </div>
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="glyphicon "></i>
                             </span>
                             <select  id = "login-branch" name="sem" class="form-control">
                                 <option selected disabled  required="">Select Semester</option>
@@ -74,7 +75,7 @@
                         </div>
                              <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-lock"></i>
+                                    <i class="glyphicon "></i>
                                 </span>
                             <select  id = "login-branch" name="section" class="form-control">
                                 <option selected disabled  required="">Select Section</option>
@@ -86,7 +87,7 @@
                         <div style="margin-top:10px" class="form-group">
                             <!-- Button -->
                             <div class="col-sm-12 controls">
-                                <input type="submit"  class="btn btn-primary" value = 'Register'>
+                                <input type="submit"  class="btn btn-primary" value = 'Edit'>
                                 <!-- <a id="btn-login" href="" class="btn btn-success">SAVE </a>
                                 <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a> -->
                             </div>

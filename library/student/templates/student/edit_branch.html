@@ -4,10 +4,10 @@
     <!-- <h1>hello</h1> -->
     <div class="about-sec section" id="about">
         <div class="container">
-            <form method = 'post' action = '{% url "add_branch" %}'>
+            <form method = 'post' action = '{% url  "edit_branch" branch.id %}'>
                 {% csrf_token %}
                 <input type="text" value = "{{branch.name}}" name = 'name' class="form-control" placeholder="Enter name">
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-primary"> Edit</button>
             </form>
         </div>
     </div>

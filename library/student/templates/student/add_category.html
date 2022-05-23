@@ -4,7 +4,7 @@
     <!-- <h1>hello</h1> -->
     <div class="about-sec section" id="about">
         <div class="container">
-            <form method = 'post' action = '{% url "add_section" %}'>
+            <form method = 'post' action = '{% url "add_category" %}'>
                 {% csrf_token %}
                 <input type="text" name = 'name' class="form-control" placeholder="Enter name" required="">
                 <button type="submit" class="btn btn-primary">Add</button>

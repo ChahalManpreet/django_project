@@ -62,106 +62,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </h1>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse navbar-ex1-collapse nav-right">
-                        <ul class="nav navbar-nav navbar-left cl-effect-15">
-                            <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                            <li class="hidden">
-                                <a class="page-scroll" href="#page-top"></a>
-                            </li>
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'branches' %}">Branches</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">shop
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="shop.html">product catalog</a>
-                                    </li>
-                                    <li>
-                                        <a href="single_product.html">single product</a>
-                                    </li>
-                                    <li>
-                                        <a href="checkout.html">checkout</a>
-                                    </li>
-									<li>
-                                        <a href="payment.html">Payment</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">footers
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="footer.html">Default</a>
-                                    </li>
-                                    <li>
-                                        <a href="footer1.html">variant1</a>
-                                    </li>
-                                    <li>
-                                        <a href="footer2.html">variant2</a>
-                                    </li>
-                                    <li>
-                                        <a href="footer3.html">variant3</a>
-                                    </li>
-                                    <li>
-                                        <a href="footer4.html">variant4</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact us</a>
-                            </li>
-                            <li>
-                                <a href="login.html" title="SignIn & SignUp">
-                                    <span class="fa fa-user nav-icon" aria-hidden="true"></span>
-                                </a>
-                            </li>
 
-                        </ul>
-                        <!-- search-bar -->
-                        <div class="search-bar-agileits">
-                            <div class="cd-main-header">
-                                <ul class="cd-header-buttons">
-                                    <li>
-                                        <a class="cd-search-trigger" href="#cd-search">
-                                            <span></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <!-- cd-header-buttons -->
-                            </div>
-                            <div id="cd-search" class="cd-search">
-                                <form action="#" method="post">
-                                    <input name="Search" type="search" placeholder="Type and Hit Enter...">
-                                </form>
-                            </div>
-                        </div>
-                        <!-- //search-bar ends here -->
-                        <!-- shopping cart -->
-                        <div class="cart-mainf">
-                            <div class="chrcart chrcart2 cart cart box_1">
-                                <form action="" method="post" class="last">
-                                    
-                                    <input type="hidden" name="cmd" value="_cart">
-                                    <input type="hidden" name="display" value="1">
-                                    <button class="top_chr_cart" type="submit" name="submit" value="">
-                                        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- //shopping cart ends here -->
-                    </div>
-                    <!-- /.navbar-collapse -->
-                    <div class="clearfix"></div>
-                </div>
                 <!-- /.container -->
             </div>
         </nav>
@@ -195,9 +96,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="panel-title">Sign In</div>
-                            <div class="fpassword">
+                            <!--<div class="fpassword">
                                 <a href="#">Forgot password?</a>
-                            </div>
+                            </div>-->
                         </div>
                         <div style="padding-top:30px" class="panel-body">
                             <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
@@ -305,8 +206,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <!--//signin and signup form ends here-->
-     <!-- footer -->
-     <div class="footer-bottom section">
+    <!-- footer -->
+    <!-- footer -->
+    <div class="footer-bottom section">
         <div class="container">
             <!-- newsletter -->
             <div class="subscribe-main section-w3layouts text-center">
@@ -365,7 +267,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="blog1">
                         <div class="col-md-3 col-sm-3 col-xs-2 bl1">
                             <a href="#">
-                                <img src="\static/images/b1.jpg" alt="" class="img-responsive" />
+                                <img src="images/b1.jpg" alt="" class="img-responsive" />
                             </a>
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-10 bl2">
@@ -377,7 +279,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="blog1">
                         <div class="col-md-3 col-sm-3 col-xs-2 bl1">
                             <a href="#">
-                                <img src="\static/images/b2.jpg" alt="" class="img-responsive" />
+                                <img src="images/b2.jpg" alt="" class="img-responsive" />
                             </a>
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-10 bl2">
@@ -443,8 +345,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
     <!-- //footer -->
     <div class="cpy-right">
-        <p>© 2022 Chronicle. All rights reserved | Design by
-            <a href="http://w3layouts.com"> Manpreet Kaur.</a>
+        <p>© 2018 Chronicle. All rights reserved | Design by
+            <a href="http://w3layouts.com"> W3layouts.</a>
         </p>
     </div>
 <!-- //home -->
@@ -452,10 +354,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="js/jquery-2.2.3.min.js"></script>
     <!-- //js -->
     <!--search jQuery-->
-    <script src="js/main.js "></script>
+    <script src="js/main.js"></script>
     <!--search jQuery-->
     <!-- cart-js -->
-    <script src="js/minicart.js "></script>
+    <script src="js/minicart.js"></script>
     <script>
         chr.render();
 
@@ -489,7 +391,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- //dropdown nav -->
 
     <!-- Scrolling Nav JavaScript -->
-    <script src="js/scrolling-nav.js "></script>
+    <script src="js/scrolling-nav.js"></script>
     <!-- //fixed-scroll-nav-js -->
     <!-- start-smooth-scrolling -->
     <script src="js/move-top.js"></script>
@@ -524,7 +426,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         });
     </script>
-    <script src="js/SmoothScroll.min.js "></script>
+    <script src="js/SmoothScroll.min.js"></script>
     <!-- //smooth-scrolling-of-move-up -->
     <!-- Bootstrap core JavaScript
  ================================================== -->
