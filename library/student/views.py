@@ -281,29 +281,63 @@ def add_student(request):
     else:
         return render(request, "student/register.html",  {'branches': branches, 'sections': sectios, 'sems': sems})
 
+def all_books(request):
+    books = book.objects.all()
+    return render(request, 'student/all_books.html', {'book': books})
+
 def add_book(request):
+    categry = category.objects.all()
     if request.method == 'POST':
         bookname = request.POST['name']
         author = request.POST['author']
         publication = request.POST['publication']
         image = request.POST['image']
         copies = request.POST['copies']
-        category = request.POST['category']  
+        categori = request.POST['category']
         issuedays = request.POST['issuedays']
         fine = request.POST['fine']
+
+        
+        sel_categori = category.objects.get(id=categori)
 
        # print(bookname, author,publication,image,copies,category,issuedays,fine)
     #return render(request, 'student/add_book.html')
 
 
         try:
-            a = book(BookName = bookname,Author =  author,Publication = publication, BookImage = image, No_Copies = copies ,Category_Id = category, No_Days_Issue = issuedays, Book_Fine = fine)
+            a = book(BookName = bookname,Author =  author,Publication = publication, BookImage = image, No_Copies = copies ,Category_Id = sel_categori, No_Days_Issue = issuedays, Book_Fine = fine)
             a.save()
         except:
            return render(request, 'student/add_book.html', {'message': 'Try Again'})
         return HttpResponseRedirect(reverse('catgorys'))
     else:
-        return render(request, 'student/add_book.html')
+        return render(request, 'student/add_book.html',{'category':categry})
+
+def edit_book(request, id):
+    book_retrieved = book.objects.get(id=id)
+    if request.method == "POST":
+        
+        user_name = request.POST['username']
+        user_email = request.POST['email']
+        # user_password = request.POST['password']
+        user_reg = request.POST['reg']
+        user_branch = request.POST['branch']
+        user_sem = request.POST['sem']
+        user_section = request.POST['section']
+
+        book_retrieved.userId.username = user_name
+        book_retrieved.userId.email = user_email
+        # reg_retrieved.password = user_password
+        book_retrieved.reg = user_reg
+        book_retrieved.branch_id.name =  user_branch
+        book_retrieved.semester_id.name = user_sem
+        book_retrieved.section_id.name = user_section
+        
+        book_retrieved.save()
+        
+        return HttpResponseRedirect(reverse('books'))
+    else:
+        return render(request, "student/edit_book.html", {'student': book_retrieved})
 
 
 def all_category(request):
@@ -319,7 +353,7 @@ def add_category(request):
             b.save()
         except:
             return render(request, 'student/add_category.html', {'message': 'Try Again'})
-        return HttpResponseRedirect(reverse('categorys'))
+        return HttpResponseRedirect(reverse('catgorys'))
     else:
         return render(request, 'student/add_category.html')
 
@@ -333,7 +367,7 @@ def edit_category(request, id):
             sel_category.save()
         except:
             return render(request, 'student/edit_category.html', {'category': sel_category, 'message': 'try again'})
-        return HttpResponseRedirect(reverse('categorys'))
+        return HttpResponseRedirect(reverse('catgorys'))
 
     else:
         return render(request, 'student/edit_category.html', {'category': sel_category})
@@ -345,4 +379,4 @@ def delete_category(request, id):
         categry.delete()
     except:
         return render(request, 'student/category.html', {'categorys': categorys, 'message': 'Please try again'})
-    return HttpResponseRedirect(reverse('categorys'))
+    return HttpResponseRedirect(reverse('catgorys'))
