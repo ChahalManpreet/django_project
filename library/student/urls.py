@@ -33,8 +33,7 @@ urlpatterns = [
     #student edit by admin
     path('edit_student/<int:id>', views.edit_student, name='edit_student'),
 
-
-    path('add_book', views.add_book, name = 'add_book'),
     path('books', views.all_books, name = 'books'),
+    path('add_book', views.add_book, name = 'add_book'),
     path('edit_book/<int:id>', views.edit_book, name='edit_book'),
 ]

@@ -6,7 +6,7 @@
         <div class="container">
             <form method = 'post' action = '{% url "add_semester" %}'>
                 {% csrf_token %}
-                <input type="text" name = 'name' class="form-control" placeholder="Enter semester" required="">
+                <input type="text" name = 'name' class="form-control" placeholder="Enter semester" minlength="2" maxlength="10" required="">
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>
         </div>

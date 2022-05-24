@@ -19,25 +19,25 @@
 
                     <div style="padding-top:30px" class="panel-body">
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                        <form  class="form-horizontal" action="{% url 'edit_book' book.id %}" method="post">
+                        <form  class="form-horizontal" action='{% url "edit_book" book.id %}' method="post">
                             {% csrf_token %}
                             <div style="margin-bottom: 25px" class="input-group">
-                                <input type="text" name = 'name' value="{{book.i.BookName}}" class="form-control" placeholder="Enter Book Name" minlength="3" required = "">
+                                <input type="text" name = 'name' value="{{book.BookName}}" class="form-control" placeholder="Enter Book Name" minlength="3" required = "">
                             </div>
                             <div style="margin-bottom: 25px" class="input-group">
-                                <input type="text" name = 'author' value="{{book.i.Author}}" class="form-control" placeholder="Enter Author Name" minlength="3"  required = "">
+                                <input type="text" name = 'author' value="{{book.Author}}" class="form-control" placeholder="Enter Author Name" minlength="3"  required = "">
                             </div>
                             <div style="margin-bottom: 25px" class="input-group">
-                                <input type="text" name = 'publication' value="{{book.i.BookName}}" class="form-control" placeholder="Enter Publication Name" minlength="3"  required = "">
+                                <input type="text" name = 'publication' value="{{book.Publication}}" class="form-control" placeholder="Enter Publication Name" minlength="3"  required = "">
                             </div>
                             <div style="margin-bottom: 25px" class="input-group">
-                                <input type="file" name = 'image'  value="{{book.i.BookImage}}}" class="form-control" placeholder="Upload Image" required = "">
+                                <input type="file" name = 'image'  value="{{book.BookImage}}}" class="form-control" placeholder="Upload Image" required = "">
                             </div>
                             <div style="margin-bottom: 25px" class="input-group">
-                                <input type="number" name = 'copies'  value="{{book.i.No_Copies}}" class="form-control" placeholder="Number of Copies" min = "1" required = "">
+                                <input type="number" name = 'copies'  value="{{book.No_Copies}}" class="form-control" placeholder="Number of Copies" min = "1" required = "">
                             </div>
                             <div style="margin-bottom: 25px" class="input-group">
-                                <select  name="category"  value="{{book.i.Category_Id.name}}" class="form-control">
+                                <select  name="category"  value="{{book.Category_Id.name}}" class="form-control">
                                     <option selected disabled  required="">Select Category</option>
                                     
 
@@ -48,10 +48,10 @@
                             </div>
                             
                             <div style="margin-bottom: 25px" class="input-group">
-                                <input type="number" name = 'issuedays'  value="{{book.i.No_Days_Issue}}" class="form-control" placeholder="Number of days issue" min = "2" max="10" required = "">
+                                <input type="number" name = 'issuedays'  value="{{book.No_Days_Issue}}" class="form-control" placeholder="Number of days issue" min = "2" max="10" required = "">
                             </div>
                             <div style="margin-bottom: 25px" class="input-group">
-                                <input type="number" name = 'fine'  value="{{book.i.Book_Fine}}" class="form-control" placeholder="Book Fine"min="5" required = "">
+                                <input type="number" name = 'fine'  value="{{book.Book_Fine}}" class="form-control" placeholder="Book Fine"min="5" required = "">
                             </div>
                             
                             <button type="submit" class="btn btn-primary">Edit </button>

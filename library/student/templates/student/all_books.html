@@ -5,7 +5,7 @@
     <div class="about-sec section" id="about">
         <div class="container">
             <a href="{% url 'add_book' %}" class="btn btn-primary">Add</a>
-            <table class="table">
+            <table class="table" >
                 <tr>
                     <th>ID</th>
                     <th>Book_Name</th>
@@ -29,7 +29,9 @@
                         <td>{{i.Category_Id.name}}</td>
                         <td>{{i.No_Days_Issue}}</td>
                         <td>{{i.Book_Fine}}</td>
-                        
+                        <td>
+                            <a href = "{% url 'edit_book' i.id %}" class = 'btn btn-primary'>Edit</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>

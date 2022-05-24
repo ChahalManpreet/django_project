@@ -24,7 +24,7 @@
                             <span class="input-group-addon">
                                 <i class="glyphicon "></i>
                             </span>
-                            <input id="login-username" type="text" class="form-control" name="username" value="{{student.userId.username}}" placeholder="username " required="">
+                            <input id="login-username" type="text" class="form-control" name="username" value="{{student.userId.username}}" placeholder="username " minlength="3" required="">
                         </div>
 
                         <div style="margin-bottom: 25px" class="input-group">
@@ -45,7 +45,7 @@
                             <span class="input-group-addon">
                                 <i class="glyphicon "></i>
                             </span>
-                            <input id="login-registration" type="text" class="form-control" name="reg" value="{{student.Reg_No}}" placeholder="enter registration number" required="">
+                            <input id="login-registration" type="text" class="form-control" name="reg" value="{{student.Reg_No}}" placeholder="enter registration number" minlength="2" maxlength="5"  required="">
                         </div>
                         
                         
@@ -55,7 +55,7 @@
                             </span>
                             <select  id = "login-branch" name="branch"class="form-control">
                                 <!--<option selected disabled  required="">Select Branch</option>-->
-                                <option value = "{{student.branch_id.name}}"></option>
+                                <option  selected disabled  required="" value = "{{student.branch_id.name}}"></option>
 
                                 <!--{% for i in branches %}
                                     <option value="{{student.branch_id}}" >{{student.name}}</option> student.branch_id.name

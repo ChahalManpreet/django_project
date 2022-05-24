@@ -317,27 +317,34 @@ def edit_book(request, id):
     book_retrieved = book.objects.get(id=id)
     if request.method == "POST":
         
-        user_name = request.POST['username']
-        user_email = request.POST['email']
-        # user_password = request.POST['password']
-        user_reg = request.POST['reg']
-        user_branch = request.POST['branch']
-        user_sem = request.POST['sem']
-        user_section = request.POST['section']
+        book_name = request.POST['name']
+        book_author = request.POST['author']
+        book_publication = request.POST['publication']
+        book_image = request.POST['image']
+        book_copies = request.POST['copies']
+        book_category = request.POST['category']
+        book_issuedays = request.POST['issuedays']
+        book_fine = request.POST['fine']
 
-        book_retrieved.userId.username = user_name
-        book_retrieved.userId.email = user_email
-        # reg_retrieved.password = user_password
-        book_retrieved.reg = user_reg
-        book_retrieved.branch_id.name =  user_branch
-        book_retrieved.semester_id.name = user_sem
-        book_retrieved.section_id.name = user_section
+        #book_retrieved.reg = user_reg
+
+        book_retrieved.BookName = book_name
+        book_retrieved.Author = book_author
+        book_retrieved.Publication = book_publication
+        book_retrieved.BookImage = book_image
+        book_retrieved.No_Copies =  book_copies
+        book_retrieved.Category_Id.name = book_category
+        book_retrieved.No_Days_Issue = book_issuedays
+        book_retrieved.Book_Fine = book_fine
         
-        book_retrieved.save()
         
+        try:
+            book_retrieved.save()
+        except:
+            return render(request, 'student/edit_category.html', {'book': book_retrieved, 'message': 'try again'})
         return HttpResponseRedirect(reverse('books'))
     else:
-        return render(request, "student/edit_book.html", {'student': book_retrieved})
+        return render(request, "student/edit_book.html", {'book':book_retrieved})
 
 
 def all_category(request):
