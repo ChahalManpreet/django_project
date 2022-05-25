@@ -1,10 +1,10 @@
 {% extends 'student/admin_layout.html' %}
 
 {% block body %}
-    <!-- <h1>hello</h1> -->
+    
     <div class="about-sec section" id="about">
         <div class="container">
-            <div class="col-md-7 about-left-grid">
+             <h1 >List of Branches</h1> 
             <a href="{% url 'add_branch' %}" class="btn btn-primary">Add</a>
             <table class="table">
                 <tr>
@@ -23,10 +23,6 @@
                     </tr>
                 {% endfor %}
             </table>
-            </div>
-            <div class="col-md-5 about-right-grid">
-                
-            </div>
         </div>
     </div>
     

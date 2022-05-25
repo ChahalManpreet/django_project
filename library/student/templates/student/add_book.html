@@ -22,13 +22,13 @@
                         <form  class="form-horizontal" action="{% url 'add_book' %}" method="post">
                             {% csrf_token %}
                             <div style="margin-bottom: 25px" class="input-group">
-                                <input type="text" name = 'name' class="form-control" placeholder="Enter Book Name" required = "">
+                                <input type="text" name = 'name' class="form-control" placeholder="Enter Book Name" minlength = "3" required = "">
                             </div>
                             <div style="margin-bottom: 25px" class="input-group">
-                                <input type="text" name = 'author' class="form-control" placeholder="Enter Author Name" required = "">
+                                <input type="text" name = 'author' class="form-control" placeholder="Enter Author Name" minlength = "3" required = "">
                             </div>
                             <div style="margin-bottom: 25px" class="input-group">
-                                <input type="text" name = 'publication' class="form-control" placeholder="Enter Publication Name" required = "*">
+                                <input type="text" name = 'publication' class="form-control" placeholder="Enter Publication Name" minlength = "3" required = "*">
                             </div>
                             <div style="margin-bottom: 25px" class="input-group">
                                 <input type="file" name = 'image' class="form-control" placeholder="Upload Image" required = "">
