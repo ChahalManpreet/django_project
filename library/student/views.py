@@ -4,6 +4,7 @@ from . models import User, students, branch, semester, section, category ,book
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -21,7 +22,8 @@ def log_in(request):
         user = authenticate(request, username=username,password=password)
         # Check if authentication successful
         if user is not None:
-            login(request, user)
+            if user.is_superuser:
+              login(request, user)
             return HttpResponseRedirect(reverse("demo"))
         else:
             return render(request, "student/login.html", {
@@ -75,10 +77,12 @@ def register(request):
             return render(request, "student/register.html", {
                 "message": "Username already taken."
             })
-        return render(request, 'student/register.html', {"message": 'Registered successfully.'})
+        return render(request, 'student/register.html', {"message": 'Registered Successfully.'})
     else:
         return render(request, "student/register.html",  {'branches': branches, 'sections': sectios, 'sems': sems})
 
+
+@login_required(login_url ='/login')
 def edit_student(request, id):
     reg_retrieved = students.objects.get(id=id)
     if request.method == "POST":
@@ -106,10 +110,12 @@ def edit_student(request, id):
         return render(request, "student/edit_student.html", {'student': reg_retrieved})
 
 
+@login_required(login_url ='/login')
 def all_branch(request):
     branches = branch.objects.all()
     return render(request, 'student/branch.html', {'branch': branches})
 
+@login_required(login_url ='/login')
 def add_branch(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -123,6 +129,7 @@ def add_branch(request):
     else:
         return render(request, 'student/add_branch.html')
 
+@login_required(login_url ='/login')
 def delete_branch(request, id):
     branc = branch.objects.get(id=id)
     branches = branch.objects.all()
@@ -132,6 +139,7 @@ def delete_branch(request, id):
         return render(request, 'student/branch.html', {'branches': branches, 'message': 'Please try again'})
     return HttpResponseRedirect(reverse('branches'))
 
+@login_required(login_url ='/login')
 def edit_branch(request, id):
     sel_branch = branch.objects.get(id=id)
     if (request.method) == 'POST':
@@ -147,12 +155,13 @@ def edit_branch(request, id):
     else:
         return render(request, 'student/edit_branch.html', {'branch': sel_branch})
 
+@login_required(login_url ='/login')
 def all_semester(request):
     semesters = semester.objects.all()
     # print(semesters)
     return render(request, 'student/semester.html', {'semester': semesters})
 
-
+@login_required(login_url ='/login')
 def add_semester(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -166,6 +175,7 @@ def add_semester(request):
     else:
         return render(request, 'student/add_semester.html')
 
+@login_required(login_url ='/login')
 def edit_semester(request, id):
     sel_semester = semester.objects.get(id=id)
     if (request.method) == 'POST':
@@ -181,6 +191,8 @@ def edit_semester(request, id):
     else:
         return render(request, 'student/edit_semester.html', {'semester': sel_semester})
 
+
+@login_required(login_url ='/login')
 def delete_semester(request, id):
     semestr = semester.objects.get(id=id)
     semesters = semester.objects.all()
@@ -191,10 +203,12 @@ def delete_semester(request, id):
     return HttpResponseRedirect(reverse('semesters'))
 
 
+@login_required(login_url ='/login')
 def all_section(request):
     sections = section.objects.all()
     return render(request, 'student/section.html', {'section': sections})
 
+@login_required(login_url ='/login')
 def add_section(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -208,6 +222,7 @@ def add_section(request):
     else:
         return render(request, 'student/add_section.html')
 
+@login_required(login_url ='/login')
 def edit_section(request, id):
     sel_section = section.objects.get(id=id)
     if (request.method) == 'POST':
@@ -223,6 +238,7 @@ def edit_section(request, id):
     else:
         return render(request, 'student/edit_section.html', {'section': sel_section})
 
+@login_required(login_url ='/login')
 def delete_section(request, id):
     secton = section.objects.get(id=id)
     sections = section.objects.all()
@@ -233,10 +249,12 @@ def delete_section(request, id):
     return HttpResponseRedirect(reverse('sections'))
 
 
+@login_required(login_url ='/login')
 def all_students(request):
     student = students.objects.all()
     return render(request, 'student/all_student.html', {'students': student})
 
+@login_required(login_url ='/login')
 def add_student(request):
     branches = branch.objects.all()
     sems = semester.objects.all()
@@ -274,17 +292,19 @@ def add_student(request):
             a.save()
 
         except IntegrityError:
-            return render(request, "student/register.html", {
+            return render(request, "student/add_student.html", {
                 "message": "Username already taken."
             })
-        return render(request, 'student/register.html', {"message": 'Registered successfully.'})
+        return render(request, 'student/add_student.html', {"message": 'Student Added Successfully.'})
     else:
-        return render(request, "student/register.html",  {'branches': branches, 'sections': sectios, 'sems': sems})
+        return render(request, "student/add_student.html",  {'branches': branches, 'sections': sectios, 'sems': sems})
 
+@login_required(login_url ='/login')
 def all_books(request):
     books = book.objects.all()
     return render(request, 'student/all_books.html', {'book': books})
 
+@login_required(login_url ='/login')
 def add_book(request):
     categry = category.objects.all()
     if request.method == 'POST':
@@ -313,6 +333,7 @@ def add_book(request):
     else:
         return render(request, 'student/add_book.html',{'category':categry})
 
+@login_required(login_url ='/login')
 def edit_book(request, id):
     book_retrieved = book.objects.get(id=id)
     if request.method == "POST":
@@ -347,10 +368,12 @@ def edit_book(request, id):
         return render(request, "student/edit_book.html", {'book':book_retrieved})
 
 
+@login_required(login_url ='/login')
 def all_category(request):
     categorys = category.objects.all()
     return render(request, 'student/category.html', {'category': categorys})
 
+@login_required(login_url ='/login')
 def add_category(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -364,6 +387,7 @@ def add_category(request):
     else:
         return render(request, 'student/add_category.html')
 
+@login_required(login_url ='/login')
 def edit_category(request, id):
     sel_category = category.objects.get(id=id)
     if (request.method) == 'POST':
@@ -379,6 +403,7 @@ def edit_category(request, id):
     else:
         return render(request, 'student/edit_category.html', {'category': sel_category})
 
+@login_required(login_url ='/login')
 def delete_category(request, id):
     categry = category.objects.get(id=id)
     categorys = category.objects.all()

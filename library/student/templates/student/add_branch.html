@@ -1,15 +1,37 @@
 {% extends 'student/admin_layout.html' %}
 
 {% block body %}
-    <!-- <h1>hello</h1> -->
-    <div class="about-sec section" id="about">
-        <div class="container">
-            <h1 >Add Branch</h1>
-            <form method = 'post' action = '{% url "add_branch" %}'>
-                {% csrf_token %}
-                <input type="text" name = 'name' class="form-control" placeholder="Enter branch name" minlength="2" maxlength="10" required = "">
-                <button type="submit" class="btn btn-primary">Add </button>
-            </form>
+<div class="login-form section text-center">
+    <div class="container">
+        
+        <div id="loginbox" style="margin-top:100px;" class="mainbox  loginbox">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Add Branch</div>
+                   
+                </div>
+
+
+                {% if message %}
+                    <div class="alert alert-warning">{{message}}</div>
+                {% endif %}
+
+                <div style="padding-top:30px" class="panel-body">
+                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                    <form class="form-horizontal" method = 'post' action = '{% url "add_branch" %}'>
+                        {% csrf_token %}
+                    <input type="text" name = 'name' class="form-control" placeholder="Enter branch name" minlength="2" maxlength="15" required >
+                    <div style="margin-top:20px" class="form-group">
+                        <!-- Button -->
+                        <div class="col-sm-12 controls">
+                            <button type="submit" class="btn btn-primary">Add </button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
 {% endblock %}
