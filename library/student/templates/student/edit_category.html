@@ -4,6 +4,7 @@
     <!-- <h1>hello</h1> -->
     <div class="about-sec section" id="about">
         <div class="container">
+            <h1>Edit Category</h1> 
             <form method = 'post' action = '{% url  "edit_category" category.id %}'>
                 {% csrf_token %}
                 <input type="text" value = "{{category.name}}" name = 'name' class="form-control" placeholder="Edit Category here" minlength="3" maxlength="10" required="">

@@ -1,9 +1,10 @@
 {% extends 'student/admin_layout.html' %}
 
 {% block body %}
-    <!-- <h1>hello</h1> -->
+    
     <div class="about-sec section" id="about">
         <div class="container">
+            <h1>Edit Branch</h1> 
             <form method = 'post' action = '{% url  "edit_branch" branch.id %}'>
                 {% csrf_token %}
                 <input type="text" value = "{{branch.name}}" name = 'name' class="form-control" placeholder="Edit Branch here" minlength="2" maxlength="10" required = "">

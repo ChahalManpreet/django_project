@@ -55,6 +55,9 @@ body a:focus {
     outline: none;
     text-decoration: none;
 }
+.chahal{
+    margin-top: 300px;
+}
 
 /*-- banner --*/
 
@@ -835,7 +838,7 @@ ul.about-list {
 .about-right-grid {
     background: url(../images/a1.jpg) no-repeat center;
     background-size: cover;
-    min-height: 787px;
+    max-height: 787px;
     border: 10px solid rgba(223, 164, 2, 0.35);
 }
 

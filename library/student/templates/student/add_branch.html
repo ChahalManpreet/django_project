@@ -4,6 +4,7 @@
     <!-- <h1>hello</h1> -->
     <div class="about-sec section" id="about">
         <div class="container">
+            <h1 >Add Branch</h1>
             <form method = 'post' action = '{% url "add_branch" %}'>
                 {% csrf_token %}
                 <input type="text" name = 'name' class="form-control" placeholder="Enter branch name" minlength="2" maxlength="10" required = "">

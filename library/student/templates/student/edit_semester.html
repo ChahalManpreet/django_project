@@ -4,6 +4,7 @@
     <!-- <h1>hello</h1> -->
     <div class="about-sec section" id="about">
         <div class="container">
+            <h1>Edit Semester</h1> 
             <form method = 'post' action = '{% url  "edit_semester" semester.id %}'>
                 {% csrf_token %}
                 <input type="text" value = "{{semester.name}}" name = 'name' class="form-control" placeholder="Edit Semester here" minlength="2" maxlength="10" required="">

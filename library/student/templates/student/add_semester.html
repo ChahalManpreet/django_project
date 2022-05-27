@@ -4,6 +4,7 @@
     <!-- <h1>hello</h1> -->
     <div class="about-sec section" id="about">
         <div class="container">
+            <h1 >Add Semester</h1>
             <form method = 'post' action = '{% url "add_semester" %}'>
                 {% csrf_token %}
                 <input type="text" name = 'name' class="form-control" placeholder="Enter semester" minlength="2" maxlength="10" required="">
