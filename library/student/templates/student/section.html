@@ -1,28 +1,59 @@
 {% extends 'student/admin_layout.html' %}
 
 {% block body %}
-    <!-- <h1>hello</h1> -->
-    <div class="about-sec section" id="about">
+<div class="banner-bg-inner">
+    <!-- banner-text -->
+    <div class="banner-text-inner">
         <div class="container">
-            <a href="{% url 'add_section' %}" class="btn btn-primary">Add</a>
-            <table class="table">
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Action</th>
-                </tr>
-                {% for i in section %}
-                    <tr>
-                        <td>{{i.id}}</td>
-                        <td>{{i.name}}</td>
-                        <td>
-                            <a href = "{% url 'edit_section' i.id %}" class = 'btn btn-primary'>Edit</a>
-                            <a href = '{% url "delete_section" i.id %}' class = 'btn btn-primary'>Delete</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </table>
+            <h2 class="title-inner">
+                {{headTitle}}
+            </h2>
+
         </div>
     </div>
-    
+    <!-- //banner-text -->
+</div>
+<div class="innerf-pages section">
+    <div class="container">
+        <div class="privacy about">
+            <ul class="btn-group btn-breadcrumb bc-list">
+                <li class="btn btn1">
+                    <a href="">
+                        <i class="glyphicon glyphicon-home"></i>
+                    </a>
+                </li>
+                <li class="btn btn2">
+                    <a href="{% url 'add_section' %}">Add Section</a>
+                </li>
+            </ul>
+            <br>
+            <br>
+            <div class="checkout-right">
+                <table class="timetable_sub table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Td</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in section %}
+                    <tr class="rem1">
+                        <td class="invert">{{i.id}}</td>
+                        <td class="invert-image">
+                            {{i.name}}
+                        </td>
+                        <td class="invert-image">
+                            <a href="{% url 'edit_section' i.id %}" class='btn btn-primary'>Edit</a>
+                            <a href='{% url "delete_section" i.id %}' class='btn btn-primary'>Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

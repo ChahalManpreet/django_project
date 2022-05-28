@@ -1,0 +1,63 @@
+{% extends 'student/admin_layout.html' %}
+
+{% block body %}
+<div class="banner-bg-inner">
+    <!-- banner-text -->
+    <div class="banner-text-inner">
+        <div class="container">
+            <h2 class="title-inner">
+                {{headTitle}}
+            </h2>
+
+        </div>
+    </div>
+    <!-- //banner-text -->
+</div>
+<div class="principles-grids principles-grids1">
+    <div class="abt-btm agileits w3layouts aos-init aos-animate">
+        <div class="col-md-4 col-sm-4 agileits elite-services2 w3layouts bottom-gds" style="padding:20px;"
+             data-aos="fade-down">
+            <div class="bott-img bott-img1 agileits w3layouts">
+                <div class="icon-holder agileits w3layouts">
+                    <span class="agileits w3layouts service-icon" style="padding: 20px 20px;"
+                          aria-hidden="true">{{st}}</span>
+                </div>
+                <h4 class="mission agileits w3layouts">Number of Sections</h4>
+                <div class="description agileits w3layouts">
+                    <a href="{% url 'sections' %}">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 agileits elite-services2 w3layouts bottom-gds" style="padding:20px;"
+             data-aos="fade-down">
+            <div class="bott-img bott-img1 agileits w3layouts">
+                <div class="icon-holder agileits w3layouts">
+                    <span class="agileits w3layouts service-icon" style="padding: 20px 20px;"
+                          aria-hidden="true">{{ct}}</span>
+                </div>
+                <h4 class="mission agileits w3layouts">Number of Categories</h4>
+                <div class="description agileits w3layouts">
+                    <a href="{% url 'catgorys' %}">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 agileits elite-services2 w3layouts bottom-gds" style="padding:20px;"
+             data-aos="fade-down">
+            <div class="bott-img bott-img1 agileits w3layouts">
+                <div class="icon-holder agileits w3layouts">
+                    <span class="agileits w3layouts service-icon" style="padding: 20px 20px;"
+                          aria-hidden="true">{{bk}}</span>
+                </div>
+                <h4 class="mission agileits w3layouts">Number of Books</h4>
+                <div class="description agileits w3layouts">
+                    <a href="{% url 'books' %}">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <br>
+    </div>
+</div>
+
+{% endblock %}

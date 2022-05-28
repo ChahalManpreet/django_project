@@ -1,9 +1,3 @@
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-
 <!DOCTYPE html>
 {% load static %}
 <html lang="zxx">
@@ -11,9 +5,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <head>
     <title>Chronicle Education Category Bootstrap Responsive website Template | Home :: w3layouts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Chronicle Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design"/>
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -22,6 +16,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+
     </script>
     <!-- Custom Theme files -->
     <link href="{% static 'assests/css/bootstrap.css' %}" type="text/css" rel="stylesheet" media="all">
@@ -30,164 +25,120 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="{% static 'assests/css/style.css' %}" type="text/css" rel="stylesheet" media="all">
     <!-- font-awesome icons -->
     <link href="{% static 'assests/css/font-awesome.css' %}" rel="stylesheet">
+    <!-- shop css -->
+    <link href="{% static 'assests/css/shop.css' %}" type="text/css" rel="stylesheet" media="all">
+    <!-- checkout css -->
+    <link href="{% static 'assests/css/checkout.css' %}" type="text/css" rel="stylesheet" media="all">
     <!-- //Custom Theme files -->
     <!-- online-fonts -->
     <!-- logo -->
     <link href="//fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
     <!-- titles -->
-    <link href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i"
+          rel="stylesheet">
     <!-- body -->
-    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+          rel="stylesheet">
     <!-- //online-fonts -->
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    <div id="home">
-        <!-- header -->
-        <!-- navbar -->
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="main-nav">
-                <div class="container">
-
-                    <div class="navbar-header page-scroll">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                            <span class="sr-only">Chronicle</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <h1>
-                            <a class="navbar-brand" href="index.html">Chronicle</a>
-                        </h1>
-                    </div>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse navbar-ex1-collapse nav-right">
-                        <ul class="nav navbar-nav navbar-left cl-effect-15">
-                            <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                            <li class="hidden">
-                                <a class="page-scroll" href="#page-top"></a>
-                            </li>
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'branches' %}">Branches</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'semesters' %}">Semesters</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'sections' %}">Sections</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'catgorys' %}">Category</a>
-                            </li>
-                            
-                            <li>
-                                <a href="{% url 'books' %}">Books</a>
-                            </li>
-                            
-
-                        </ul>
-                        <!-- search-bar -->
-                        <div class="search-bar-agileits">
-                            <div class="cd-main-header">
-                                <ul class="cd-header-buttons">
-                                    <li>
-                                        <a class="cd-search-trigger" href="#cd-search">
-                                            <span></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <!-- cd-header-buttons -->
-                            </div>
-                            <div id="cd-search" class="cd-search">
-                                <form action="#" method="post">
-                                    <input name="Search" type="search" placeholder="Type and Hit Enter...">
-                                </form>
-                            </div>
-                        </div>
-                        <!-- //search-bar ends here -->
-                        <!-- shopping cart -->
-                        <div class="cart-mainf">
-                            <div class="chrcart chrcart2 cart cart box_1">
-                                <form action="#" method="post" class="last">
-                                    <input type="hidden" name="cmd" value="_cart">
-                                    <input type="hidden" name="display" value="1">
-                                    <button class="top_chr_cart" type="submit" name="submit" value="">
-                                        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- //shopping cart ends here -->
-                    </div>
-                    <!-- /.navbar-collapse -->
-                    <div class="clearfix"></div>
-                </div>
-                <!-- /.container -->
-            </div>
-        </nav>
-        <!-- //navbar ends here -->
-
-        {% block body %}
-    
-        {% endblock %}
-
-
-        <!-- footer -->
-        <div class="footer-bottom section">
+<div id="home">
+    <!-- header -->
+    <!-- navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="main-nav">
             <div class="container">
-                <!-- newsletter -->
-                <div class="subscribe-main section-w3layouts text-center">
-                    <h4 class="rad-txt">
-                        <span class="abtxt1">keep yourself</span>
-                        <span class="abtext">updated</span>
-                    </h4>
-                    <h5>subscribe to our newsletter to stay up-to-date with our projects.</h5>
-                    <div class="subscribe-form">
-                        <form action="#" method="post" class="subscribe_form">
-                            <div class="email-news">
-                                <input type="email" placeholder="Email" required="">
-                            </div>
-                            <div class="sub-news">
-                                <input type="submit" value="subscribe">
-                            </div>
-                        </form>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <p>We respect your privacy.No spam ever!</p>
+
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Library Management</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h1>
+                        <a class="navbar-brand" href="">LM</a>
+                    </h1>
                 </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse nav-right">
+                    <ul class="nav navbar-nav navbar-left cl-effect-15">
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <li class="hidden">
+                            <a class="page-scroll" href="#page-top"></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'adminIndex' %}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'branches' %}">Branches</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'semesters' %}">Semesters</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'sections' %}">Sections</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'catgorys' %}">Category</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'books' %}">Books</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'adminLogout' %}">Logout</a>
+                        </li>
+
+                        <li>
+                            <a href="">Welcome {{request.user}}</a>
+                        </li>
+
+                    </ul>
+                    <!-- search-bar -->
+                    <!-- //search-bar ends here -->
+                    <!-- shopping cart -->
+                    <!-- //shopping cart ends here -->
+                </div>
+                <!-- /.navbar-collapse -->
+                <div class="clearfix"></div>
+            </div>
+            <!-- /.container -->
+        </div>
+    </nav>
+    <!-- //navbar ends here -->
+
+    {% block body %}
+
+    {% endblock %}
+
+
+    <!-- footer -->
+    <div class="footer-bottom section">
+        <div class="container">
+            <!-- newsletter -->
+            <div class="subscribe-main section-w3layouts text-center">
+                <h4 class="rad-txt">
+                    <span class="abtxt1">keep yourself</span>
+                    <span class="abtext">updated</span>
+                </h4>
                 <!-- //newsletter ends here -->
                 <!-- footer grids-->
                 <div class="footer-cpy">
                     <!-- footer-grid1 -->
                     <div class="col-md-3 col-sm-6 footer-logo">
                         <h3>
-                            <a href="index.html">Chronicle</a>
+                            <a href="index.html">Library Management</a>
                         </h3>
                         <h4>about us</h4>
-                        <p>Vallis Molestie Arcu Morbi Dapibus Suscipit Ante Sit Efficitur Eu estie Arcu Mor Anestie Ate Vesti.</p>
+                        <p>Vallis Molestie Arcu Morbi Dapibus Suscipit Ante Sit Efficitur Eu estie Arcu Mor Anestie Ate
+                            Vesti.</p>
                     </div>
                     <!-- //footer-grid1 -->
                     <!-- footer-grid2 -->
-                    <div class="col-md-3 col-sm-6 footer-nav text-center">
-                        <h4>navigation</h4>
-                        <ul>
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li>
-                                <a href="about.html">About us</a>
-                            </li>
-                            <li>
-                                <a href="shop.html">shop</a>
-                            </li>
-                            <li>
-                                <a href="contact.html">contact us</a>
-                            </li>
-                        </ul>
-                    </div>
                     <!-- //footer-grid2 -->
                     <!-- footer-grid3 -->
                     <div class="col-md-3 col-sm-6 blog-footer">
@@ -195,7 +146,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="blog1">
                             <div class="col-md-3 col-sm-3 col-xs-2 bl1">
                                 <a href="#">
-                                    <img src="\static/images/b1.jpg" alt="" class="img-responsive" />
+                                    <img src="\static/images/b1.jpg" alt="" class="img-responsive"/>
                                 </a>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-10 bl2">
@@ -207,7 +158,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="blog1">
                             <div class="col-md-3 col-sm-3 col-xs-2 bl1">
                                 <a href="#">
-                                    <img src="\static/images/b2.jpg" alt="" class="img-responsive" />
+                                    <img src="\static/images/b2.jpg" alt="" class="img-responsive"/>
                                 </a>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-10 bl2">
@@ -233,7 +184,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </li>
                             <li>
                                 <span class="fa fa-envelope"></span>
-                                <a href="mailto:info@example.com">mail@chronicle.com</a>
+                                <a href="">mail@chronicle.com</a>
                             </li>
                         </ul>
                     </div>
@@ -242,51 +193,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <!-- //footer-grids -->
                 <!-- footer social -->
-                <div class="footer-social text-center">
-                    <h4>stay connected</h4>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-facebook icon_facebook"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-twitter icon_twitter"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-dribbble icon_dribbble"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-google-plus icon_g_plus"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
                 <!-- //footer social -->
             </div>
             <!-- //footer container -->
         </div>
         <!-- //footer -->
         <div class="cpy-right">
-            <p>© 2018 Chronicle. All rights reserved | Design by
-                <a href="http://w3layouts.com"> W3layouts.</a>
+            <p>Library Management | Admin
+                <a href=""> Panel</a>
             </p>
         </div>
     </div>
     <!-- //home -->
     <!-- js -->
-    <script src="{% static 'assests/js/jquery-2.2.3.min.js'%}"></script>
+    <script src="{% static 'assests/js/jquery-2.2.3.min.js '%}"></script>
     <!-- //js -->
     <!--search jQuery-->
-    <script src="{% static 'assests/js/main.js'%}"></script>
+    <script src="{% static 'assests/js/main.js '%}"></script>
     <!--search jQuery-->
     <!-- cart-js -->
-    <script src="{% static 'assests/js/minicart.js'%}"></script>
+    <script src="{% static 'assests/js/minicart.js '%}"></script>
     <script>
         chr.render();
 
@@ -299,10 +225,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 for (i = 0, len = items.length; i < len; i++) {}
             }
         });
+
     </script>
     <!-- //cart-js -->
     <!-- Scrolling Nav JavaScript -->
-    <script src="{% static 'assests/js/scrolling-nav.js'%}"></script>
+    <script src="{% static 'assests/js/scrolling-nav.js '%}"></script>
     <!-- //fixed-scroll-nav-js -->
     <!-- dropdown nav -->
     <script>
@@ -318,11 +245,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 }
             );
         });
+
     </script>
     <!-- //dropdown nav -->
     <!-- start-smooth-scrolling -->
-    <script src="{% static 'assests/js/move-top.js'%}"></script>
-    <script src="{% static 'assests/js/easing.js'%}"></script>
+    <script src="{% static 'assests/js/move-top.js '%}"></script>
+    <script src="{% static 'assests/js/easing.js '%}"></script>
     <script>
         jQuery(document).ready(function ($) {
             $(".scroll").click(function (event) {
@@ -333,6 +261,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 }, 1000);
             });
         });
+
     </script>
     <!-- //end-smooth-scrolling -->
     <!-- smooth-scrolling-of-move-up -->
@@ -352,11 +281,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             });
 
         });
+
     </script>
-    <script src="{% static 'assests/js/SmoothScroll.min.js'%}"></script>
+    <script src="{% static 'assests/js/SmoothScroll.min.js '%}"></script>
     <!-- //smooth-scrolling-of-move-up -->
     <!-- about bottom grid Numscroller -->
-    <script src="{% static 'assests/js/numscroller-1.0.js'%}"></script>
+    <script src="{% static 'assests/js/numscroller-1.0.js '%}"></script>
     <!-- //about bottom grid Numscroller -->
     <!-- Bootstrap core JavaScript
  ================================================== -->
