@@ -3,10 +3,10 @@
 <html lang="zxx">
 
 <head>
-    <title>Chronicle Education Category Bootstrap Responsive website Template | Home :: w3layouts</title>
+    <title>Library Management | Home Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="Chronicle Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+    <meta name="keywords" content="Chronicle Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design"/>
     <script>
         addEventListener("load", function () {
@@ -16,6 +16,7 @@
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+
 
     </script>
     <!-- Custom Theme files -->
@@ -70,31 +71,19 @@
                             <a class="page-scroll" href="#page-top"></a>
                         </li>
                         <li>
-                            <a href="{% url 'adminIndex' %}">Home</a>
+                            <a href="{% url 'allBooks' %}">Home</a>
                         </li>
                         <li>
-                            <a href="{% url 'branches' %}">Branches</a>
+                            <a href="{% url 'requestedBooks' %}">Requested Books</a>
                         </li>
                         <li>
-                            <a href="{% url 'semesters' %}">Semesters</a>
+                            <a href="{% url 'booksCategory' %}">Books Category</a>
                         </li>
                         <li>
-                            <a href="{% url 'sections' %}">Sections</a>
+                            <a href="{% url 'userLogout' %}">Logout</a>
                         </li>
                         <li>
-                            <a href="{% url 'catgorys' %}">Category</a>
-                        </li>
-
-                        <li>
-                            <a href="{% url 'books' %}">Books</a>
-                        </li>
-
-                        <li>
-                            <a href="{% url 'requestIssues' %}">Requested Books</a>
-                        </li>
-
-                        <li>
-                            <a href="{% url 'adminLogout' %}">Logout</a>
+                            <a href="">Welcome {{request.user}}</a>
                         </li>
 
                     </ul>
@@ -199,7 +188,7 @@
         </div>
         <!-- //footer -->
         <div class="cpy-right">
-            <p>Library Management | Admin
+            <p>Library Management | User
                 <a href=""> Panel</a>
             </p>
         </div>
@@ -226,6 +215,7 @@
             }
         });
 
+
     </script>
     <!-- //cart-js -->
     <!-- Scrolling Nav JavaScript -->
@@ -246,6 +236,7 @@
             );
         });
 
+
     </script>
     <!-- //dropdown nav -->
     <!-- start-smooth-scrolling -->
@@ -262,6 +253,7 @@
             });
         });
 
+
     </script>
     <!-- //end-smooth-scrolling -->
     <!-- smooth-scrolling-of-move-up -->
@@ -272,7 +264,7 @@
                 containerID: 'toTop', // fading element id
                 containerHoverID: 'toTopHover', // fading element hover id
                 scrollSpeed: 1200,
-                easingType: 'linear' 
+                easingType: 'linear'
             };
             */
 
@@ -281,6 +273,7 @@
             });
 
         });
+
 
     </script>
     <script src="{% static 'assests/js/SmoothScroll.min.js '%}"></script>
@@ -292,6 +285,7 @@
  ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{% static 'assests/js/bootstrap.js '%}"></script>
+</div>
 </body>
 
 </html>

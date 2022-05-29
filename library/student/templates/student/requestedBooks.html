@@ -1,0 +1,81 @@
+{% extends 'student/admin_layout.html' %}
+
+{% block body %}
+<div class="banner-bg-inner">
+    <!-- banner-text -->
+    <div class="banner-text-inner">
+        <div class="container">
+            <h2 class="title-inner">
+                {{headTitle}}
+            </h2>
+
+        </div>
+    </div>
+    <!-- //banner-text -->
+</div>
+<div class="innerf-pages section">
+    <div class="container">
+        <div class="privacy about">
+            <div class="checkout-right">
+                <table class="timetable_sub table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>Publication</th>
+                        <th>Book Image</th>
+                        <th>Student Name</th>
+                        <th>Student Branch</th>
+                        <th>Semester</th>
+                        <th>Issue Date</th>
+                        <th>Return Date</th>
+                        <th>Fine</th>
+                        <th>Current Satus</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in issueBook %}
+                    <tr class="rem1">
+                        <td>{{i.id}}</td>
+                        <td>{{i.Book_Id.BookName}}</td>
+                        <td>{{i.Book_Id.Author}}</td>
+                        <td>{{i.Book_Id.Publication}}</td>
+                        <td><img src="{{i.Book_Id.BookImage.url}}" width="100px" height="100px"></td>
+                        {% for j in st %}
+                        <td>{{j.userId.username}}</td>
+                        <td>{{j.branch_id.name}}</td>
+                        <td>{{j.semester_id.name}}</td>
+                        {% endfor %}
+                        {% if i.Status == "PENDING" %}
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>₹ 0</td>
+                        {% else %}
+                        <td>{{i.Issue_Date}}</td>
+                        <td>{{i.Return_Date}}</td>
+                        <td>₹ {{i.Fine}}</td>
+                        {% endif %}
+                        <td>{{i.Status}}</td>
+                        <td>
+                            {% if not i.isApprove %}
+                            <a href="{% url 'changestatus' %}?id={{i.id}}&Status=APPROVED&nDays={{i.Book_Id.No_Days_Issue}}">
+                                <button type="button" class="btn btn-success">APPROVE</button>
+                            </a>
+                            {% endif %}
+                            {% if not i.isRejected %}
+                            <a href="{% url 'changestatus' %}?id={{i.id}}&Status=REJECTED&nDays=0">
+                                <button type="button" class="btn btn-danger">REJECTED</button>
+                            </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

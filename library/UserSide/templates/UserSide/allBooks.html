@@ -1,0 +1,80 @@
+{% extends 'UserSide/masterPage.html' %}
+
+{% block body %}
+<div class="banner-bg-inner">
+    <!-- banner-text -->
+    <div class="banner-text-inner">
+        <div class="container">
+            <h2 class="title-inner">
+                {{headTitle}}
+            </h2>
+
+        </div>
+    </div>
+    <!-- //banner-text -->
+</div>
+
+
+<div class="innerf-pages section">
+    <div class="container-cart">
+        <!-- product left -->
+        <div class="side-bar col-md-3">
+            <!--preference -->
+            <!-- // preference -->
+            <div class="search-hotel">
+                <h3 class="shopf-sear-headits-sear-head">
+                    <span>Search</span> Book</h3>
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Search book by name" name="search" required=""
+                           style="background: #dedede; width: 100%; padding: 11px 10px 10px 10px; font-size: 13px; color: #000000; letter-spacing: 1px; text-align: center; border: none; outline: none;">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+        <!-- //product left -->
+        <!-- product right -->
+        {% if bk %}
+        <div class="left-ads-display col-md-9">
+            <div class="wrapper_top_shop">
+                <!-- product-sec1 -->
+                <div class="product-sec1">
+                    <!-- row1-->
+                    {% for i in bk %}
+                    <div class="col-md-4 product-men" style="background: #fff;">
+                        <div class="product-chr-info chr">
+                            <img src="{{i.BookImage.url}}" alt="" width="100" height="150">
+                            <div class="caption">
+                                <h4>{{i.BookName}}</h4>
+                                <p>{{i.Author}}</p>
+                                <p style="color:green;">Publication</p>
+                                <p>{{i.Publication}}</p>
+                                <a href="{% url 'requestIssueBook' i.id %}">
+                                    <button type="submit" class="chr-cart pchr-cart">Request for Issue</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- //row1 -->
+                    <div class="clearfix"></div>
+
+                </div>
+
+                <!-- //product-sec1 -->
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        {% else %}
+        <div class="left-ads-display col-md-9">
+            <div class="wrapper_top_shop">
+                <p style="color:green;">No Books Available</p>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="clearfix"></div>
+
+    </div>
+</div>
+{% endblock %}
