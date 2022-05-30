@@ -513,7 +513,7 @@ def changestatus(request):
             delta = d2 - d1
             print("Dates Difference - ", delta.days, 'Type of Days - ', type(delta.days))
             bookFine = request.GET['bFine']
-            totalBookFine = bookFine * delta.days
+            totalBookFine = int(bookFine) * int(delta.days)
             print("Total Book Fine - ", totalBookFine)
 
             b.Status = request.GET['Status']
