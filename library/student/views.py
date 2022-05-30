@@ -505,12 +505,30 @@ def changestatus(request):
         d = newDate.strftime("%Y-%m-%d")
         print("New Date - ", d, "Type - ", type(d))
 
-        b.Status = request.GET['Status']
-        b.Issue_Date = formattedDate
-        b.Return_Date = d
-        b.Fine = 0
-        b.save()
-        return redirect(requestIssues)
+        # Firstly change the return date from string to datetime format for comparison againts issue date
+        returnDate = datetime.datetime.strptime(d,"%Y-%m-%d")
+        if formattedDate > returnDate:
+            d1 = returnDate
+            d2 = formattedDate
+            delta = d2 - d1
+            print("Dates Difference - ", delta.days, 'Type of Days - ', type(delta.days))
+            bookFine = request.GET['bFine']
+            totalBookFine = bookFine * delta.days
+            print("Total Book Fine - ", totalBookFine)
+
+            b.Status = request.GET['Status']
+            b.Issue_Date = formattedDate
+            b.Return_Date = d
+            b.Fine = totalBookFine
+            b.save()
+            return redirect(requestIssues)
+        else:
+            b.Status = request.GET['Status']
+            b.Issue_Date = formattedDate
+            b.Return_Date = d
+            b.Fine = 0
+            b.save()
+            return redirect(requestIssues)
     else:
         b.Status = request.GET['Status']
         b.Issue_Date = None

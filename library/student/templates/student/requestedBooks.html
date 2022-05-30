@@ -60,7 +60,7 @@
                         <td>{{i.Status}}</td>
                         <td>
                             {% if not i.isApprove %}
-                            <a href="{% url 'changestatus' %}?id={{i.id}}&Status=APPROVED&nDays={{i.Book_Id.No_Days_Issue}}">
+                            <a href="{% url 'changestatus' %}?id={{i.id}}&Status=APPROVED&nDays={{i.Book_Id.No_Days_Issue}}&bFine={{i.Book_Id.Book_Fine}}">
                                 <button type="button" class="btn btn-success">APPROVE</button>
                             </a>
                             {% endif %}
