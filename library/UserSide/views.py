@@ -146,6 +146,17 @@ def requestIssueBook(request, pk):
 
 @login_required(login_url='userLogin')
 def requestedBooks(request):
-    issueBook = issue.objects.filter(Stu_Id=request.user.id)
-    headTitle = "Requested Books"
-    return render(request, "UserSide/requestedBooks.html", {"headTitle": headTitle, "issueBook": issueBook})
+    if request.method == "POST":
+        if request.POST.get("search") is not None:
+            srh = request.POST["search"]
+            issueBook = issue.objects.filter(Status__icontains=srh)
+            headTitle = "Requested Books"
+            return render(request, "UserSide/requestedBooks.html", {"headTitle": headTitle, "issueBook": issueBook})
+        else:
+            issueBook = issue.objects.filter(Stu_Id=request.user.id)
+            headTitle = "Requested Books"
+            return render(request, "UserSide/requestedBooks.html", {"headTitle": headTitle, "issueBook": issueBook})
+    else:
+        issueBook = issue.objects.filter(Stu_Id=request.user.id)
+        headTitle = "Requested Books"
+        return render(request, "UserSide/requestedBooks.html", {"headTitle": headTitle, "issueBook": issueBook})

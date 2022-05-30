@@ -58,6 +58,7 @@
                         <td>₹ {{i.Fine}}</td>
                         {% endif %}
                         <td>{{i.Status}}</td>
+                        {% if i.Status == "PENDING" %}
                         <td>
                             {% if not i.isApprove %}
                             <a href="{% url 'changestatus' %}?id={{i.id}}&Status=APPROVED&nDays={{i.Book_Id.No_Days_Issue}}&bFine={{i.Book_Id.Book_Fine}}">
@@ -70,6 +71,9 @@
                             </a>
                             {% endif %}
                         </td>
+                        {% else %}
+                        <td>N/A</td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                     </tbody>

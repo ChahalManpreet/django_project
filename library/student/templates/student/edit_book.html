@@ -113,7 +113,7 @@
                 </div>
                 <div style="margin-bottom: 25px" class="input-group">
                     <span class="input-group-addon"></span>
-                    <input type="file" name='image' class="form-control" placeholder="Upload Image" required="">
+                    <input type="file" name='image' class="form-control" placeholder="Upload Image" value="{{book.BookImage.url}}">
                 </div>
                 <br>
                 <div style="margin-bottom: 25px" class="input-group">
@@ -126,7 +126,7 @@
                     <select  name="category" class="form-control">
                         <option selected disabled  required="">Select Category</option>
                         {% for i in category %}
-                        <option value="{{i.id}}">{{i.name}}</option>
+                        <option value="{{i.id}}" {% if book.Category_Id.id == i.id %}selected{% endif %}>{{i.name}}</option>
                         {% endfor %}
                     </select>
                 </div>

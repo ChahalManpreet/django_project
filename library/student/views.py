@@ -6,6 +6,7 @@ from django.db import IntegrityError
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 import datetime
+import os
 from datetime import timedelta
 
 
@@ -137,14 +138,21 @@ def all_branch(request):
 @login_required(login_url='login')
 def add_branch(request):
     if request.method == 'POST':
-        name = request.POST['name']
+        n = request.POST['name']
+        print("New Branch Name - ", n)
+        a = branch.objects.filter(name=n).first()
+        print("Branch Data - ", a)
+        if a:
+            return render(request, 'student/add_branch.html', {'message': 'Branch already exists'})
+        else:
+            name = request.POST['name']
 
-        try:
-            b = branch(name=name)
-            b.save()
-        except:
-            return render(request, 'student/add_branch.html', {'message': 'Try Again'})
-        return HttpResponseRedirect(reverse('branches'))
+            try:
+                b = branch(name=name)
+                b.save()
+            except:
+                return render(request, 'student/add_branch.html', {'message': 'Try Again'})
+            return HttpResponseRedirect(reverse('branches'))
     else:
         headTitle = "Add Branch"
         return render(request, 'student/add_branch.html', {'headTitle': headTitle})
@@ -191,15 +199,20 @@ def all_semester(request):
 @login_required(login_url='login')
 def add_semester(request):
     if request.method == 'POST':
-        name = request.POST['name']
-
-        try:
-            b = semester(name=name)
-            b.save()
-        except:
+        n = request.POST['name']
+        a = semester.objects.filter(name=n).first()
+        if a:
             headTitle = "Add Semester"
-            return render(request, 'student/add_semester.html', {'message': 'Try Again', 'headTitle': headTitle})
-        return HttpResponseRedirect(reverse('semesters'))
+            return render(request, 'student/add_semester.html', {'message': 'Semester already exists', 'headTitle': headTitle})
+        else:
+            name = request.POST['name']
+            try:
+                b = semester(name=name)
+                b.save()
+            except:
+                headTitle = "Add Semester"
+                return render(request, 'student/add_semester.html', {'message': 'Try Again', 'headTitle': headTitle})
+            return HttpResponseRedirect(reverse('semesters'))
     else:
         headTitle = "Add Semester"
         return render(request, 'student/add_semester.html', {"headTitle": headTitle})
@@ -246,15 +259,21 @@ def all_section(request):
 @login_required(login_url='login')
 def add_section(request):
     if request.method == 'POST':
-        name = request.POST['name']
-
-        try:
-            b = section(name=name)
-            b.save()
-        except:
+        n = request.POST['name']
+        a = section.objects.filter(name=n).first()
+        if a:
             headTitle = "Add Section"
-            return render(request, 'student/add_section.html', {'message': 'Try Again', 'headTitle': headTitle})
-        return HttpResponseRedirect(reverse('sections'))
+            return render(request, 'student/add_section.html', {'message': 'Section Already Exists', 'headTitle': headTitle})
+        else:
+            name = request.POST['name']
+
+            try:
+                b = section(name=name)
+                b.save()
+            except:
+                headTitle = "Add Section"
+                return render(request, 'student/add_section.html', {'message': 'Try Again', 'headTitle': headTitle})
+            return HttpResponseRedirect(reverse('sections'))
     else:
         headTitle = "Add Section"
         return render(request, 'student/add_section.html', {'headTitle': headTitle})
@@ -354,28 +373,34 @@ def all_books(request):
 def add_book(request):
     categry = category.objects.all()
     if request.method == 'POST':
-        bookname = request.POST['name']
-        author = request.POST['author']
-        publication = request.POST['publication']
-        image = request.FILES['image']
-        copies = request.POST['copies']
-        categori = request.POST['category']
-        issuedays = request.POST['issuedays']
-        fine = request.POST['fine']
-
-        sel_categori = category.objects.get(id=categori)
-
-        # print(bookname, author,publication,image,copies,category,issuedays,fine)
-        # return render(request, 'student/add_book.html')
-
-        try:
-            a = book(BookName=bookname, Author=author, Publication=publication, BookImage=image, No_Copies=copies,
-                     Category_Id=sel_categori, No_Days_Issue=issuedays, Book_Fine=fine)
-            a.save()
-        except:
+        n = request.POST['name']
+        a = book.objects.filter(BookName=n).first()
+        if a:
             headTitle = "Add BooK"
-            return render(request, 'student/add_book.html', {'message': 'Try Again', 'headTitle': headTitle})
-        return HttpResponseRedirect(reverse('books'))
+            return render(request, 'student/add_book.html', {'message': 'Book Already Exits', 'headTitle': headTitle})
+        else:
+            bookname = request.POST['name']
+            author = request.POST['author']
+            publication = request.POST['publication']
+            image = request.FILES['image']
+            copies = request.POST['copies']
+            categori = request.POST['category']
+            issuedays = request.POST['issuedays']
+            fine = request.POST['fine']
+
+            sel_categori = category.objects.get(id=categori)
+
+            # print(bookname, author,publication,image,copies,category,issuedays,fine)
+            # return render(request, 'student/add_book.html')
+
+            try:
+                a = book(BookName=bookname, Author=author, Publication=publication, BookImage=image, No_Copies=copies,
+                         Category_Id=sel_categori, No_Days_Issue=issuedays, Book_Fine=fine)
+                a.save()
+            except:
+                headTitle = "Add BooK"
+                return render(request, 'student/add_book.html', {'message': 'Try Again', 'headTitle': headTitle})
+            return HttpResponseRedirect(reverse('books'))
     else:
         headTitle = "Add BooK"
         return render(request, 'student/add_book.html', {'category': categry, 'headTitle': headTitle})
@@ -386,13 +411,15 @@ def edit_book(request, id):
     book_retrieved = book.objects.get(id=id)
     categry = category.objects.all()
     if request.method == "POST":
-
+        if len(request.FILES) != 0:
+            if len(book_retrieved.BookImage) > 0:
+                os.remove(book_retrieved.BookImage.path)
+            book_retrieved.BookImage = request.FILES['image']
         book_name = request.POST['name']
         book_author = request.POST['author']
         book_publication = request.POST['publication']
-        book_image = request.FILES['image']
         book_copies = request.POST['copies']
-        book_category = request.POST['category']
+        book_category = category.objects.get(id=request.POST['category'])
         book_issuedays = request.POST['issuedays']
         book_fine = request.POST['fine']
 
@@ -401,9 +428,8 @@ def edit_book(request, id):
         book_retrieved.BookName = book_name
         book_retrieved.Author = book_author
         book_retrieved.Publication = book_publication
-        book_retrieved.BookImage = book_image
         book_retrieved.No_Copies = book_copies
-        book_retrieved.Category_Id.name = book_category
+        book_retrieved.Category_Id = book_category
         book_retrieved.No_Days_Issue = book_issuedays
         book_retrieved.Book_Fine = book_fine
 
@@ -430,15 +456,21 @@ def all_category(request):
 @login_required(login_url='login')
 def add_category(request):
     if request.method == 'POST':
-        name = request.POST['name']
-
-        try:
-            b = category(name=name)
-            b.save()
-        except:
+        n = request.POST['name']
+        a = category.objects.filter(name=n).first()
+        if a:
             headTitle = "Add Category"
-            return render(request, 'student/add_category.html', {'message': 'Try Again', 'headTitle': headTitle})
-        return HttpResponseRedirect(reverse('catgorys'))
+            return render(request, 'student/add_category.html', {'message': 'Category Already Exists', 'headTitle': headTitle})
+        else:
+            name = request.POST['name']
+
+            try:
+                b = category(name=name)
+                b.save()
+            except:
+                headTitle = "Add Category"
+                return render(request, 'student/add_category.html', {'message': 'Try Again', 'headTitle': headTitle})
+            return HttpResponseRedirect(reverse('catgorys'))
     else:
         headTitle = "Add Category"
         return render(request, 'student/add_category.html', {'headTitle': headTitle})

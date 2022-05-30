@@ -15,6 +15,26 @@
 </div>
 <div class="innerf-pages section">
     <div class="container">
+        <div class="color-quality">
+            <form action="#" method="post">
+                {% csrf_token %}
+                <div class="color-quality-right">
+                    <h5>Filter Requests by Status:</h5>
+                    <select id="country1" name="search" onchange="change_country(this.value)" class="frm-field required sect"
+                            style="width:100%;">
+                        <option value="PENDING">Pending</option>
+                        <option value="APPROVED">Approved</option>
+                        <option value="REJECTED">Rejected</option>
+                    </select>
+                </div>
+                <br>
+                <div class="color-quality-right">
+                    <input type="submit" value="Filter" style="color: #fff; font-size: 16px; background: #000000; border: none; outline: none; padding: 7px 33px 9px;
+                letter-spacing: 2px; text-transform: capitalize; -webkit-transition: .5s all; -moz-transition: .5s all; transition: .5s all;">
+                </div>
+                <br>
+            </form>
+        </div>
         <div class="privacy about">
             <div class="checkout-right">
                 <table class="timetable_sub table-responsive">
