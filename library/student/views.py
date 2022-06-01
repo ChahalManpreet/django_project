@@ -509,13 +509,33 @@ def delete_category(request, id):
 
 @login_required(login_url='login')
 def requestIssues(request):
-    issueBook = issue.objects.all()
-    for i in issueBook:
-        print("Student Id - ", i.Stu_Id.id)
-        st = students.objects.filter(userId_id=i.Stu_Id.id)
-        headTitle = "Requested Books"
-        return render(request, "student/requestedBooks.html",
-                      {"headTitle": headTitle, "issueBook": issueBook, "st": st})
+    if request.method == "POST":
+        if request.POST.get("search") is not None:
+            srh = request.POST["search"]
+            issueBook = issue.objects.filter(Status__icontains=srh)
+
+            for i in issueBook:
+                print("Student Id - ", i.Stu_Id.id)
+                st = students.objects.filter(userId_id=i.Stu_Id.id)
+                headTitle = "Requested Books"
+                return render(request, "student/requestedBooks.html",
+                              {"headTitle": headTitle, "issueBook": issueBook, "st": st})
+        else:
+            issueBook = issue.objects.all()
+            for i in issueBook:
+                print("Student Id - ", i.Stu_Id.id)
+                st = students.objects.filter(userId_id=i.Stu_Id.id)
+                headTitle = "Requested Books"
+                return render(request, "student/requestedBooks.html",
+                              {"headTitle": headTitle, "issueBook": issueBook, "st": st})
+    else:
+        issueBook = issue.objects.all()
+        for i in issueBook:
+            print("Student Id - ", i.Stu_Id.id)
+            st = students.objects.filter(userId_id=i.Stu_Id.id)
+            headTitle = "Requested Books"
+            return render(request, "student/requestedBooks.html",
+                          {"headTitle": headTitle, "issueBook": issueBook, "st": st})
 
 
 @login_required(login_url='login')
@@ -555,10 +575,17 @@ def changestatus(request):
             b.save()
             return redirect(requestIssues)
         else:
+            cBooks = request.GET['nCopies']
+            print("Current Number of Copies - ", cBooks, " Type - ", type(cBooks))
+            copiesOfBooks = int(cBooks) - 1
+            print("Updated Number of Copies - ", copiesOfBooks)
+            updateCopies = str(copiesOfBooks)
             b.Status = request.GET['Status']
             b.Issue_Date = formattedDate
             b.Return_Date = d
+            b.Book_Id.No_Copies = updateCopies
             b.Fine = 0
+            print("Copies - ", b.Book_Id.No_Copies)
             b.save()
             return redirect(requestIssues)
     else:

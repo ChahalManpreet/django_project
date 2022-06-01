@@ -15,6 +15,26 @@
 </div>
 <div class="innerf-pages section">
     <div class="container">
+        <div class="color-quality">
+            <form action="#" method="post">
+                {% csrf_token %}
+                <div class="color-quality-right">
+                    <h5>Filter Requests by Status:</h5>
+                    <select id="country1" name="search" onchange="change_country(this.value)" class="frm-field required sect"
+                            style="width:100%;">
+                        <option value="PENDING">Pending</option>
+                        <option value="APPROVED">Approved</option>
+                        <option value="REJECTED">Rejected</option>
+                    </select>
+                </div>
+                <br>
+                <div class="color-quality-right">
+                    <input type="submit" value="Filter" style="color: #fff; font-size: 16px; background: #000000; border: none; outline: none; padding: 7px 33px 9px;
+                letter-spacing: 2px; text-transform: capitalize; -webkit-transition: .5s all; -moz-transition: .5s all; transition: .5s all;">
+                </div>
+                <br>
+            </form>
+        </div>
         <div class="privacy about">
             <div class="checkout-right">
                 <table class="timetable_sub table-responsive">
@@ -25,6 +45,7 @@
                         <th>Author</th>
                         <th>Publication</th>
                         <th>Book Image</th>
+                        <th>Number of Copies Available</th>
                         <th>Student Name</th>
                         <th>Student Branch</th>
                         <th>Semester</th>
@@ -43,6 +64,7 @@
                         <td>{{i.Book_Id.Author}}</td>
                         <td>{{i.Book_Id.Publication}}</td>
                         <td><img src="{{i.Book_Id.BookImage.url}}" width="100px" height="100px"></td>
+                        <td>{{i.Book_Id.No_Copies}}</td>
                         {% for j in st %}
                         <td>{{j.userId.username}}</td>
                         <td>{{j.branch_id.name}}</td>
@@ -61,7 +83,7 @@
                         {% if i.Status == "PENDING" %}
                         <td>
                             {% if not i.isApprove %}
-                            <a href="{% url 'changestatus' %}?id={{i.id}}&Status=APPROVED&nDays={{i.Book_Id.No_Days_Issue}}&bFine={{i.Book_Id.Book_Fine}}">
+                            <a href="{% url 'changestatus' %}?id={{i.id}}&Status=APPROVED&nDays={{i.Book_Id.No_Days_Issue}}&bFine={{i.Book_Id.Book_Fine}}&nCopies={{i.Book_Id.No_Copies}}">
                                 <button type="button" class="btn btn-success">APPROVE</button>
                             </a>
                             {% endif %}
