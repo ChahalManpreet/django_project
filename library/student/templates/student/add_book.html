@@ -22,6 +22,9 @@
                         <form  class="form-horizontal" action="{% url 'add_book' %}" method="post">
                             {% csrf_token %}
                             <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon "></i>
+                                    </span>
                                 <input type="text" name = 'name' class="form-control" placeholder="Enter Book Name" minlength = "3" required = "">
                             </div>
                             <div style="margin-bottom: 25px" class="input-group">

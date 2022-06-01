@@ -24,7 +24,10 @@ def log_in(request):
         if user is not None:
             if user.is_superuser:
               login(request, user)
-            return HttpResponseRedirect(reverse("demo"))
+              return HttpResponseRedirect(reverse("branches"))
+            else:
+                return render(request, "student/login.html", {
+            "message": "User is not an Admin."})
         else:
             return render(request, "student/login.html", {
             "message": "Invalid username and/or password."
@@ -85,6 +88,9 @@ def register(request):
 @login_required(login_url ='/login')
 def edit_student(request, id):
     reg_retrieved = students.objects.get(id=id)
+    branches = branch.objects.all()
+    semesters = semester.objects.all()
+    sections = section.objects.all()
     if request.method == "POST":
         
         user_name = request.POST['username']
@@ -107,7 +113,7 @@ def edit_student(request, id):
         
         return HttpResponseRedirect(reverse('students'))
     else:
-        return render(request, "student/edit_student.html", {'student': reg_retrieved})
+        return render(request, "student/edit_student.html", {'student': reg_retrieved, 'branches': branches, 'semester': semesters, 'section': sections})
 
 
 @login_required(login_url ='/login')
